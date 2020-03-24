@@ -20,9 +20,10 @@ function MapHandler() {
   function handleMapClick(e: LeafletMouseEvent) {
     console.log('Map Click', Date.now());
     
-    if (!sampleMode) return;
-    const newPoint = { latlng: e.latlng, id: uuid() };
-    setPoints([...points, newPoint]);
+    if (sampleMode) {
+      const newPoint = { latlng: e.latlng, id: uuid() };
+      setPoints([...points, newPoint]);
+    }
   }
 
   function handleSampleToggle(e: any) {
