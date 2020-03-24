@@ -26,6 +26,6 @@ code {
   pointer-events: all;
   display: flex;
   flex-direction: column;
-  height: 4.5em;
+  height: 10em;
   justify-content: space-between;
 }
