@@ -1,7 +1,8 @@
-See it live on GitHub Pages:
+## See it live on GitHub Pages:
 
-https://orelkan.github.io/leaflet-sampler
+### https://orelkan.github.io/leaflet-sampler
 
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
