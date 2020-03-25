@@ -26,6 +26,15 @@ code {
   pointer-events: all;
   display: flex;
   flex-direction: column;
-  height: 10em;
+  width: 11em;
+  height: 7em;
   justify-content: space-between;
+}
+
+.leaflet-draw-toolbar {
+  margin-top: 10em;
+}
+
+.sr-only {
+  display: none;
 }

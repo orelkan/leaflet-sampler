@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Slide } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { FeaturesState } from '../store/features';
+import { FeaturesState, Point } from '../store/features';
 
 const useStyles = makeStyles({
   table: {
@@ -26,6 +26,8 @@ const useStyles = makeStyles({
 export default function FeaturesTable() {
   const classes = useStyles();
   const points = useSelector((store: FeaturesState) => store.points);
+  const polylines = useSelector((store: FeaturesState) => store.polylines);
+  const polygons = useSelector((store: FeaturesState) => store.polygons);
   const isTableDisplayed = useSelector((store: FeaturesState) => store.isTableDisplayed);
 
   return (
@@ -35,18 +37,40 @@ export default function FeaturesTable() {
           <TableHead>
             <TableRow>
               <TableCell align="left">ID</TableCell>
+              <TableCell align="right">Layer Type</TableCell>
               <TableCell align="right">Latitude</TableCell>
               <TableCell align="right">Longitude</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {points.map(row => (
+            {points.map((row: Point) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
                   {row.id}
                 </TableCell>
+                <TableCell align="right">Point</TableCell>
                 <TableCell align="right">{row.latlng.lat}</TableCell>
                 <TableCell align="right">{row.latlng.lng}</TableCell>
+              </TableRow>
+            ))}
+            {polylines.map(row => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell align="right">Polyline</TableCell>
+                <TableCell align="right">{row.latlngs[0].toString()}</TableCell>
+                <TableCell align="right">{row.latlngs[1].toString()}</TableCell>
+              </TableRow>
+            ))}
+            {polygons.map(row => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell align="right">Polygon</TableCell>
+                <TableCell align="right">{row.latlngs[0][0].toString()}</TableCell>
+                <TableCell align="right">{row.latlngs[0][1].toString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
